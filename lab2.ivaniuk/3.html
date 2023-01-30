@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+</head>
+  <body>
+    <label>Введіть кількість радків: <input type="text" id="rows"></label><br>
+    <label>Введіть кількість стовпців: <input type="text" id="cols"></label><br>
+    <button onclick="createTable()">Побудувати матрицю</button><br>
+    <button onclick="createTable()">Підрахувати суму елементів порядковий номер строки та стовпця яких співпадають</button><br>
+    <div id="table"></div>
+    <div id="sum"></div>
+  </body>
+  <script>
+    function createTable() {
+      var rows = document.getElementById("rows").value;
+      var cols = document.getElementById("cols").value;
+      var table = "<table>";
+      var sum = 0;
+      for (var r = 1; r <= rows; r++) {
+        table += "<tr>";
+        for (var c = 1; c <= cols; c++) {
+          var value = r * c;
+          table += "<td>" + value + "</td>";
+          if (r === c) {
+              sum += value;
+          }
+        }
+        table += "</tr>";
+      }
+      table += "</table>";
+      document.getElementById("table").innerHTML = table;
+      document.getElementById("sum").innerHTML = "Sum: " + sum;
+    }
+  </script>
+</html>

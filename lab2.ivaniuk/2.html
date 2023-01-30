@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2</title>
+</head>
+<body>
+  <form>
+    <input id="expression" type="text" placeholder="Enter an expression">
+    <br>
+    <button id="calculate-button" type="button">Calculate</button>
+    <br>
+    <p id="result"></p>
+  </form>
+  <script>
+    const button = document.getElementById("calculate-button");
+    const resultElement = document.getElementById("result");
+
+    button.addEventListener("click", function() {
+      const expression = document.getElementById("expression").value;
+      try {
+        const result = eval(expression);
+        resultElement.innerHTML = "Result: " + result;
+      } catch (err) {
+        resultElement.innerHTML = "Invalid Expression";
+      }
+    });
+  </script>
+</body>
+</html>

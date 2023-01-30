@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  </head>
+  <body>
+  <h1>$.data()</h1>
+  <button id="myButton">Кнопка</button>
+   
+  <hr>
+    
+<h1>$.isNumeric()</h1>
+<input type="text" id="inputNumber">
+<button id="checkButton">Кнопка</button>
+
+<hr>
+
+<h1>$.isPlainObject()</h1>
+    <p>Введіть об'єкт у текстове поле та натисніть кнопку, щоб перевірити, чи це звичайний об'єкт:</p>
+    <input type="text" id="inputObject">
+    <button id="checkButton1">Check</button>
+
+    <hr>
+
+  </head>
+  <body>
+    <h1>$.noop()</h1>
+    <button id="noopButton">Кнопка</button>
+
+
+    <h1>$.removeData()</h1>
+    <p>Клікніть:</p>
+    <button id="dataButton">Кнопка</button>
+
+  <hr>
+
+  <h1>$.type()</h1>
+  <button id="checkString">Рядок</button>
+  <button id="checkNumber">Номер</button>
+  <button id="checkBoolean">Булевий</button>
+  <button id="checkArray">Масив</button>
+  <button id="checkObject">Об'єкт
+  </button>
+  
+    <div id="result"></div>
+
+    <script>
+
+   $(document).ready(function() {
+        $("#myButton").click(function() {
+        var data = $(this).data("key");
+        alert("Button data: " + data);
+        });
+
+  $("#myButton").data("key", "value");
+  });
+
+  $(document).ready(function() {
+      $("#checkButton").click(function() {
+      var input = $("#inputNumber").val();
+       if ($.isNumeric(input)) {
+      alert("Це номер");
+      } else {
+      alert("Це не номер(Приклад=380...");
+       }
+      });
+      });
+
+$.isPlainObject = function(obj) {
+        if (!obj || typeof obj !== "object" || obj.nodeType || obj === obj.window) {
+          return false;
+        }
+  
+        if (obj.constructor && !Object.prototype.hasOwnProperty.call(obj.constructor.prototype, "isPrototypeOf")) {
+          return false;
+        }
+  
+        return true;
+        };
+
+        $("#checkButton1").click(function() {
+        var input = eval($("#inputObject").val());
+        if ($.isPlainObject(input)) {
+          alert("Простий об'єкт");
+        } else {
+          alert("Не є простим об'єктом");
+        }
+        });
+
+        $("#noopButton").click(function() {
+        $.noop();
+        alert("$.noop() was called.");
+      });
+
+      $("#dataButton").click(function() {
+        var $button = $(this);
+        $button.data("key", "value");
+        alert("Data before removal: " + JSON.stringify($button.data()));
+        $button.removeData("key");
+        alert("Data after removal: " + JSON.stringify($button.data()));
+      });
+   
+      $(document).ready(function() {
+    $("#checkString").click(function() {
+      var string = "Перевірка";
+      var result = $.type(string);
+      $("#result").html("Type of " + string + " is " + result);
+    });
+    
+    $("#checkNumber").click(function() {
+      var number = 590;
+      var result = $.type(number);
+      $("#result").html("Type of " + number + " is " + result);
+    });
+    
+    $("#checkBoolean").click(function() {
+      var boolean = true;
+      var result = $.type(boolean);
+      $("#result").html("Type of " + boolean + " is " + result);
+    });
+    
+    $("#checkArray").click(function() {
+      var array = [5, 9, 0];
+      var result = $.type(array);
+      $("#result").html("Type of " + array + " is " + result);
+    });
+    
+    $("#checkObject").click(function() {
+      var object = { name: "Петя", age: 28 };
+      var result = $.type(object);
+      $("#result").html("Type of " + JSON.stringify(object) + " is " + result);
+    });
+  });
+
+</script>
+  </body>
+</html>

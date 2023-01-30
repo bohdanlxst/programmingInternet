@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <style>
+    .block_second{
+      height: 100px;
+      width: 100px;
+      padding: 10px;
+      background: purple;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h1>.html()</h1>
+<p id="first">Зміна пагаграфу: <button>Вивід (тикніть)</button></p>
+
+<hr>
+
+<h1>.css()</h1>
+<div class="block_second">Зміна кольору</div>
+<p id="second_result"></p>
+
+<hr>
+
+<h1>.val()</h1>
+<input type="text" id="third" placeholder="Встановити значення">
+<p id="third_result"></p>
+<hr>
+
+<h1>.attr()</h1>
+<p><button id="demo">Тикніть (Почати)</button></p>
+<p><input type="checkbox" id="fourth_one"><span id="fourth_checked">Провірити? (тикніть)</span></p>
+<p><input type="text" id="fourth_two" disabled></p>
+<p><input type="text" id="fourth_three">Змінити тип</p>
+<p><input type="text" id="fourth_fifth" size="50" value="Результат: " readonly></p>
+
+<script>
+  
+
+  $('#first').click(function() {
+    const htmlVal = $(this).html()
+    $(this).text(htmlVal).show()
+  })
+
+  $(".block_second").click(function (){
+
+
+  $(this).css("background", "red");
+    const data = []
+    const styles = $(this).css(["width", "height", "background", "color", "padding"])
+
+    $.each(styles, (prop, value) => data.push(prop + ": " + value))
+    $("#second_result").html(data.join("<br>"))
+
+  })
+
+
+  $("#third").keyup(function(){
+    $("#third_result").text($(this).val())
+  })
+
+
+  $("#demo").click(function(){
+
+    $("#fourth_one").change(function(){
+      let text;
+      if(!$(this).attr("checked")){
+
+        text = "Так, працює"
+        $(this).attr("checked", "")
+        this.checked = true
+
+      }else{
+        this.checked = false
+        text = "Ні, не так"
+
+        $(this).removeAttr("checked")
+
+      }
+        $("#fourth_checked").text(text)
+    })
+
+    $("#fourth_two").attr("value", "Був встановленний .attr(name, val)")
+    $("#fourth_three").attr({
+      disabled: true,
+      type: "checkbox"
+    })
+
+    $("#fourth_fifth").attr("value", function(i, val){
+      return val + ".attr(назва, функція) працює!";
+    })
+
+  })
+
+
+</script>
+
+</body>
+</html>

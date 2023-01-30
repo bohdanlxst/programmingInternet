@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    <h1 align="center">.filter(); Приклад 1</h1>
+    <ul>
+        <li class="list1">1</li>
+        <li>2</li>
+        <li class="list1">3</li>
+        <li>4</li>
+        <li class="list1">5</li>
+        <li>6</li>
+        <li class="list1">7</li>
+        <li>8</li>
+        <li class="list1">9</li>
+    </ul>
+    <button class="btn1">Тикніть</button>
+
+    <br><br><hr><br>
+
+    <h1 align="center">.filter(); Приклад 2</h1>
+    <ul>
+        <li class="list2">1</li>
+        <li class="list2">2</li>
+        <li class="list2">3</li>
+        <li class="list2">4</li>
+        <li class="list2">5</li>
+        <li class="list2">6</li>
+        <li class="list2">7</li>
+        <li class="list2">8</li>
+        <li class="list2">9</li>
+    </ul>
+    <button class="btn2">Тикніть</button>
+
+    <script>
+        $('.btn1').click(() => {
+            $("li").filter(".list1").css("background-color", "purple").text('modify');
+        });
+
+        $('.btn2').click(() => {
+            $(".list2").filter(":nth-child(3n)").css("background-color", "yellow").text('modify');
+        });
+
+    </script>
+</body>
+</html>

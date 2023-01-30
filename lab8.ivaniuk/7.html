@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>7</title>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<style>
+		* {
+			font-size: 20px;
+		}
+	</style>
+ <style>
+
+div {
+   margin: 3px;
+   width: 40px;
+   height: 30px;
+   position: absolute;
+   left: 0px;
+   top: 100px;
+   background: rgb(75, 0, 128);
+   display: none;
+ }
+ div.newcolor {
+   background: rgb(255, 0, 234);
+ }
+</style>
+</head>
+<body>
+  <h1>.clearQueue()Анімація з додаванням і .stop()Стоп і .finish()Фініш</h1>
+  <button id="start">Стар</button>
+  <button id="stop">Стоп</button>
+  <button id="finish">Finish</button>
+  <div></div>
+<br><br><br><hr>
+
+  <script>
+
+$("#start").click(function () {
+var myDiv = $("div");
+myDiv.show("slow");
+myDiv.animate({left:'+=200'},5000);
+myDiv.queue(function () {
+var _this = $(this);
+_this.addClass("newcolor");
+_this.dequeue();
+});
+myDiv.delay(500);
+myDiv.animate({left:'-=200'},1500);
+myDiv.queue(function () {
+var _this = $(this);
+_this.removeClass("newcolor");
+_this.dequeue();
+});
+
+});
+$("#stop").click(function () {
+var myDiv = $("div");
+myDiv.clearQueue();
+myDiv.stop();
+});
+$("#finish").click(function () { 
+var myDiv = $("div");
+myDiv.finish();
+});
+$("#queue").click(function () {
+var myDiv = $("div");
+myDiv.queue(function () {
+  var _this = $(this);
+  _this.toggleClass("newcolor");
+  _this.dequeue();
+});
+});
+
+  </script>
+</body>
+</html>

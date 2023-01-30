@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <style>
+    .block{
+      height: 50px;
+      width: 50px;
+      padding: 5px;
+      background: black;
+      color: white;
+      margin: 10px;
+    }
+    </style>
+  <style>
+    .wrap1 p{
+        color: rgb(255, 0, 247); font-weight: 700;
+    }
+    .wrap2 p{
+        color: rgb(183, 0, 255); font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>insertAfter()</h1>
+  <p><button id="first_run">Початок</button></p>
+  <div class="">
+  <p class="first">Середина</p>
+  <p class="first" id="first_finish">Кінець</p>
+  </div>
+  <hr>
+  
+<hr>
+<h1>whapr()Заміна елемента</h1>
+<p id="paragraph1">заміна кольору1</p>
+<p id="paragraph2">второй кольору2</p>
+
+<hr>
+
+<h1>.replaceAll() Замінює кожно кнопну на слово</h1>
+<button>Кнопка </button>
+<button>Добавляє</button> 
+<button>Текст</button>
+
+<hr>
+
+<h1>width()Позиція</h1>
+<p id="width">Тикніть сюда</p>
+
+<hr>
+
+<h1>position()Розташування(виводиться на екран)</h1>
+<p id="position">position()</p>
+
+<hr>
+
+<h1>.outerHeightВисота з відступом виводиться на екран</h1>
+<p>Перевірка</p><p></p>
+
+<script>
+
+(function (){ 
+  $("#first_run").click(function (){
+    $("<p class=\"first\">Початок</p>").insertAfter("#first_finish")
+  })
+});
+
+    $('#paragraph1').click(function(){
+    $(this).wrap('<div class="wrap1" />');  
+    })
+    
+        $('#paragraph2').click(function(){
+        $(this).wrap(function(){
+        return '<div class="wrap2" />';
+        });  
+        })
+
+         $(function (){
+         $("button").click(function () {
+         $("<p>" + $(this).text() + "</p>").replaceAll(this);
+         });
+         });
+
+
+        $("#width").click(function () {
+        alert($(this).width()) ;
+         });
+
+        const position = $('#position').position();
+        alert( "left: " + position.left + ", top: " + position.top );
+
+        var p = $("p:first");
+        $("p:last").text( "outerHeight:" + p.outerHeight() + " , outerHeight(true):" + p.outerHeight(true) )
+
+
+
+</script>
+
+</body>
+</html>

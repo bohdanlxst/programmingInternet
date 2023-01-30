@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+      .highlight {
+        background-color: rgb(246, 246, 246);
+      }
+    </style>
+</head>
+<body>
+
+	<h1>.closest()</h1>
+  <div class="div1">
+  <button class="btn1"></button>
+  </div>
+
+  <hr>
+
+<h1>.content()</h1>
+	<div class="div2"><em>Зміна шрифту</em></div>
+	<button class="btn2">шрифту</button>
+  
+  <hr>
+
+
+
+<h1>.nexstAll()</h1>
+<div class="div3">
+  <p>123</p>
+  <p>456</p>
+  <button class="btn3">nextalll</button>
+</div>
+
+<hr>
+
+<h1>.slice()</h1>
+  <div class="div4">
+    <p>1245</p>
+    <p>121221</p>
+    <p>23232</p>
+    <button class="btn4">slice</button>
+  </div>
+
+  <hr>
+
+  
+  <h1>.has()</h1>
+  <div class="container">
+    <p>123</p>
+    <p>12345 <em>====</em></p>
+    <p>124567</p>
+    <button class="filter-btn">Фільтр</button>
+    </div>
+
+  <hr>
+
+  <h1>.parentsUntil()</h1>
+  <div class="div6">
+    <p>12366</p>
+    <div class="nested-div">
+      <p>1234</p>
+      <button class="btn6">Вивід</button>
+    </div>
+  </div>
+  
+  <hr>
+
+<script>
+
+	// .closest()
+	$(".btn1").click(function(){
+    var parent = $(this).closest(".div1");
+    parent.css("background-color", "purple");
+  });
+
+  // .content()
+$(".btn2").click(function(){
+    	$(".div2").contents().filter("em").wrap("<b/>");
+  	});
+
+   // .nextAll()
+   $(".btn3").click(function(){
+    var nextAll = $(this).prev().prev().nextAll();
+    nextAll.css("background-color", "purple");
+  });
+
+  // .slice()
+  $(".btn4").click(function(){
+    var slice = $(".div4 p").slice(0, 2);
+    slice.css("background-color", "purple");
+  });
+
+ // .has() method
+ $(".filter-btn").click(function(){
+    var elements = $(".container").has("em");
+    elements.css("background-color", "purple");
+  });
+
+  // .parentsUntil()
+  $(".btn6").click(function(){
+    var elements = $(this).parentsUntil(".div6");
+    parentnsUnitil.css("background-color", "purple");
+  });
+  
+</script>
+</body>
+</html>

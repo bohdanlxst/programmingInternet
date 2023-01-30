@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4</title>
+</head>
+<body>
+  <form id="main_form">
+    x: <input type="text" id="x" value="0"><br>
+    y: <input type="text" id="y" value="0"><br>
+    Result: <input type="text" id="result" value=""><br>
+    <input type="button" onClick="compute();" value="Compute">
+  </form>
+  <script>
+    function compute() {
+      let x = parseFloat(document.getElementById("x").value);
+      let y = parseFloat(document.getElementById("y").value);
+      let result = 0;
+      if (y < 0) {
+        result = Math.pow(x,3)*3*x*y;
+      } else {
+        result = 2*x + x*y - x/2*y;
+      }
+      document.getElementById("result").value = result;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+.main-table {
+	width: 100%;
+	border: 3px solid rgb(71, 10, 10);
+	margin: auto;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.main-text-table {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 2rem;
+	padding: 15px;
+}
+
+.active {
+	background-color: rgb(89, 7, 7);
+	color: rgb(69, 6, 6)
+}
+
+.blured {
+	opacity: 50%;
+}
+
+p {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 1.2rem;
+	cursor: default;
+}
+
+a {
+	color: rgb(26, 14, 134);
+	text-decoration: none;
+}
+
+a:active, a:after, a:hover {
+ color: rgb(76, 5, 85);
+ text-decoration: none;
+}
+
+.email-a {
+	color: rgb(122, 14, 14);
+	text-decoration: none;
+}
+
+#img-Ivan, #img-Andriy, #img-Artur, #img-Petro {
+	width: 280px;
+	margin-left: 50px;
+}
+
+#person1, #person2, #person3, #person4 {
+	padding: 15px;
+	border-top: 4px solid rgb(74, 11, 11);
+}
+
+#person1:hover, #person2:hover, #person3:hover, #person4:hover {
+	background-color: rgb(147, 16, 101);
+	color:  rgb(83, 7, 70);
+}
+
+#bio-Ivan,	#bio-Andriy, #bio-Artur, #bio-Petro {
+	display: none;
+}

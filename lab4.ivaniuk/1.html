@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <style>
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <form id="display" style="display: none">
+        <fieldset class="choose">
+            <h1>Вам подобається програмування?</h1>
+                Так<input type="radio" name="firstQ" value="vegetable">
+                 Ні<input type="radio"name="firstQ" value="meat">
+        </fieldset> 
+
+        <fieldset class="choose">
+            <h1>Вам подобається вивчати нові мови?</h1>
+                Так<input type="radio" class="yes" name="secondQ" value="vegetable">
+                 Ні<input type="radio"name="secondQ" value="meat">
+        </fieldset>
+
+        <fieldset class="choose">
+            <h1>Що б ви подарили вибрати для початківцям?? Оберіть дві відповіді:</h1>
+                JS<input type="checkbox" name="thirdQ" value="vegetable">
+                HTML<input type="checkbox" name="thirdQ" value="meat">
+                CSS<input type="checkbox" name="thirdQ" value="vegetable">
+                Python<input type="checkbox" name="thirdQ" value="meat">
+        </fieldset>
+
+        <fieldset class="choose">
+            <h1>Що б ви вибрали? Оберіть дві відповіді:</h1>
+                Дизайн<input type="checkbox" name="fourQ" value="vegetable">
+                Верстка <input type="checkbox" name="fourQ" value="meat">
+                IOS розробка<input type="checkbox" name="fourQ" value="vegetable">
+                Гейм розброка<input type="checkbox" name="fourQ" value="meat">
+        </fieldset>
+
+        <fieldset class="info">
+            <h1>Вкажіть своє ім'я</h1>
+            <input type="text" name="fiveQ">
+        </fieldset>
+        
+        <fieldset class="info">
+            <h1>Вкажіть свій номер телефону</h1>
+            <input type="number" name="sixQ">
+        </fieldset>
+    
+    </form>
+
+        <button id="end" style="display: none; margin: auto">finish</button>
+        <button id="show">start</button>
+    
+    <script>
+        const btnShow = document.querySelector('#show');
+        const btnResult = document.querySelector('#end');
+
+        btnShow.addEventListener('click', () => {
+            document.querySelector('#display').style.display = 'block';
+            document.querySelector('#show').style.display = 'none';
+            btnResult.style.display = 'block';
+        });
+
+        function getSelected() {
+            return document.querySelectorAll('.choose input:checked');
+        }
+
+        function getPrivateInfo() {
+            return document.querySelectorAll('.info input');
+        }
+        function getValues(inputs) {
+            return Array.from(inputs, inp => inp.value);
+        }
+        function getResult(array){
+            return (array.length-2 < array.filter(el => el === 'vegetable').length) ? 'Мабуть ви програміст' : `Ви програміст на ${array.filter(el => el === 'vegetable').length*10}%`;
+        }
+        btnResult.addEventListener('click', () => {
+            const selected = getValues(getSelected());
+            const [name, phone] = getValues(getPrivateInfo());
+
+
+            document.querySelector('#display').style.display = 'none';
+            btnResult.style.display = 'none';
+
+
+            const result = document.createElement('div');
+            result.innerHTML = `<h1>Результат</h1>Імя: ${name}<br>Телефон: ${phone}<br>${getResult(selected)}`;
+            result.style.margin = 'auto';
+            document.body.prepend(result);
+        });
+    </script>
+</body>
+</html>
